@@ -21,4 +21,4 @@ Una parte importante de la base de datos es la entidad transporte, en la que gua
 Por último, tenemos la entidad albarán para guardar la información de los alabaranes tanto de salida como de llegada, como puede ser la cantidad transportada, la fecha y hora de llegada, etc.
 
 Con esta base de datos, se cumplen todas las caracteristicas necesarias para la gestion de la informacion de los transportes de la empresa, así como la obtención de los informes de actividad de los mismos.
-
+Además, también se diseñaron formularios para la inclusión de información en la base de datos de manera fácil y cómoda.
