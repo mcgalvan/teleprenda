@@ -4,7 +4,7 @@ Consiste nun traballo para a asignatura de Sectores de Negocio impartida na Facu
 
 El proyecto esta dividido en tres partes, con tres grupos asignados a ellas respectivamente, que son: Materias primas, Ropa, y Transporte.
 
-Grupo de Transporte:
+Grupo de Transporte (Castellano):
 Este grupo se encarga del diseño de la base de datos que gestiona el
 transporte de los productos de esta empresa. 
 
