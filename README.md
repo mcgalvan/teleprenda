@@ -2,23 +2,36 @@
 Mostra dun sistema loxístico para o sector textil.
 Consiste nun traballo para a asignatura de Sectores de Negocio impartida na Facultade de Informática, na UDC.
 
-El proyecto esta dividido en tres partes, con tres grupos asignados a ellas respectivamente, que son: Materias primas, Ropa, y Transporte.
+O proxecto esta dividido en tres partes, cada unha das partes ten asociado unha Base de Datos distinta:
+    * Materias primas
+    * Ropa
+    * Transporte.
 
-Grupo de Transporte (Castellano):
-Este grupo se encarga del diseño de la base de datos que gestiona el
-transporte de los productos de esta empresa. 
+## Grupo de Transporte
+Esta Base de Datos encargase de almacenar os datos relativos aos transportes tanto de materias primas como de roupas da empresa.
 
-A continuación se muestran las características que el sistema de transporte debe cumplir:
+A continuación mostranse as caracteristicas e restriccións implementadas no sistema:
 
-Cada transporte es realizado por un conductor, que transporta un conjunto de ropas y/o materias primas, identificadas por un número de pedido, con fecha y tiempo de salida desde el centro logístico, con fechas y horas de llegada y salida de las fabricas, y con identificación de la actividad (recogida de ropa, envio de materias primas, devolución de ropa defectuosa, etc).
-Se necesitan informes para la actividad de todos los transportes, informes por cada conductor, por cada número de pedido, etc.
+#### Resumo
 
-A partir de estas características se diseñó la base de datos que se puede ver en la imagen adjunta.
+Un transporte representa un viaxe do punto Orixe ao Destino, neste transporte hai un <strong>Conductor</strong> implicado, que leva unha <strong>Materia Prima</strong> ou un lote de <strong>Roupa</strong>, identificadas por un identificador de pedido (idPedido).
 
-Como podemos observar, tenemos una entidad conductor en la que se guarda la información relacionada con los diferentes conductores que trabajan para la empresa( nombre, número de telefono, fecha de contratación,...)
-Tenemos una entidad vehículo, para guardar la información relacionada con los vehículos que usan los conductores para los distintos transportes, como la matrícula del vehículo o el modelo.
-Una parte importante de la base de datos es la entidad transporte, en la que guardamos la información relacionada con los diferentes envíos que se realizan en la empresa. En esta entidad guardamos datos como el número del pedido que se transporta, origen, destino, etc. En esta entidad se especifica el tipo de transporte, el cual determina la información que guardamos del origen y destino del mismo, como por ejemplo las ids de las fábricas, o de las materias primas.
-Por último, tenemos la entidad albarán para guardar la información tanto de salida como de llegada, como puede ser la cantidad transportada y la firma de confirmación.
+#### Tipos de percorridos
 
-Con esta base de datos, se cumplen todas las caracteristicas necesarias para la gestion de la informacion de los transportes de la empresa, así como la obtención de los informes de actividad de los mismos.
-Además, también se diseñaron formularios para la inclusión de información en la base de datos de manera fácil y cómoda.
+- Materia prima do proveedor ao almacén de materias primas
+- Materia prima do almacén de materias primas á fábrica (para a fabricación de roupa)
+- Roupa da fábrica ao almacén de roupa
+- Roupa do almacén de roupa á fábrica de roupa (no caso de que sexa defectuosa)
+- Roupa do almacén de roupa ao cliente que encargou o pedido
+
+#### Base de Datos
+
+Para modelar esta situación un tanto idealizada, creouse o segunte modelo de bd:
+![ScreenShot](https://raw.githubusercontent.com/mcgalvan/teleprenda/master/Aplicacion/Transporte/BDTransporte.png)
+
+* Conductor modela os datos dun conductor que traballa para a empresa.
+* Vehiculo contén os datos dun vehículo empregado para transportar mercancía.
+* Transporte amosa información asociada aos diferentes transportes realizados pola empresa. O tipo de transporte é un atributo multivaluado, que pode tomar calquera dos 5 valores enumerados anteriormente, e os valores idFabrica e idMateriaPrima, están pensados para que se asignen en base á información asociada nas outras bases de datos.
+* Albarán modela a información tanto de saida como de chegada do transporte dende o punto de orixe ao seu destino, permitindo así que as partes implicadas neste transporte certifiquen que o número de bultos transportados é correcto. 
+
+Esta base de datos permite plasmar unha visión moi simplificada da empresa, e xerar informes de esta. Tamén se implementa unha sinxela interfaz gráfica para facer o seu uso mais accesible.
