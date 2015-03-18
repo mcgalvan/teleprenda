@@ -35,3 +35,30 @@ Para modelar esta situación un tanto idealizada, creouse o segunte modelo de bd
 * Albarán modela a información tanto de saida como de chegada do transporte dende o punto de orixe ao seu destino, permitindo así que as partes implicadas neste transporte certifiquen que o número de bultos transportados é correcto. 
 
 Esta base de datos permite plasmar unha visión moi simplificada da empresa, e xerar informes de esta. Tamén se implementa unha sinxela interfaz gráfica para facer o seu uso mais accesible.
+
+
+## Grupo de Materias primas
+O módulo de almacenamento de materias primas rexistra información dos pedidos realizados polos diversos clientes, os proveedores que suministran as distintas materias primas a a fábrica de envío dos pedidos.
+
+A continuación mostranse as caracteristicas e restriccións implementadas no sistema:
+
+#### Resumo
+
+Un cliente solicita un pedido (idPedido) que poderá necesitar para a súa elaboración diversas materias primas, suministradas por distintos proveedores. Cada materia prima da que consta o pedido será rexistrada como unha entrada distinta na base de datos.
+Unha vez obtidos todos os recursos do pedido enviaranse á fábrica para a sua manufacturación e quedará almecenada a data saída á fábrica do pedido.
+
+#### Base de Datos
+
+Modelo Entidade-relación para as materias primas.
+![ScreenShot](https://github.com/mcgalvan/teleprenda/blob/master/_lab/materias_primas.PNG)
+
+
+* Cliente modela a información dos consumidores dos nosos servizos.
+* Pedido identifica unívocamente un pedido realizado por un cliente rexistrado entre outros a data de salida do pedido así como o número de transporte de saída (un pedido só ten unha saída á fábrica) .
+* Proveedor contén os datos dos suministradores das diversas materias.
+* Materia representa as distintas materias primas rexistradas no sistema. O mesmo tipo de materia prima ofrecida por diversos proveedores constan como materias distintas.
+* Materias_pedido, é a entidade encargada de rexistrar para un pedido determinado (idPedido) as distintas entradas (par materia pedido) das que consta, así como a data de entrada no almacén.
+* Fábrica representa á fábrica á cal será enviado un pedido.
+
+
+
